@@ -12,4 +12,6 @@ RUN /bin/sh -c '[[ "$(uname -m)" != aarch64 ]] || npm install -g esbuild-linux-a
 RUN mkdir /usr/local/idle
 COPY idle.js /usr/local/idle/idle.js
 
+COPY ssh_known_hosts /etc/ssh/known_hosts
+
 CMD ["/usr/bin/node", "/usr/local/idle/idle.js"]

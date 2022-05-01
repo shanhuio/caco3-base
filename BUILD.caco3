@@ -23,7 +23,10 @@ docker_build {
 docker_build {
     Name: "nodejs",
     From: ["base"],
-    Input: ["idle.js"],
+    Input: [
+        "idle.js"
+        "ssh_known_hosts",
+    ],
     PrefixDir: ".",
     Args: ["NPM_VERSION=8.8.0"],
 }
@@ -52,7 +55,10 @@ docker_run {
 docker_build {
     Name: "golang",
     From: ["base"],
-    Input: ["go.tgz"],
+    Input: [
+        "go.tgz",
+        "ssh_known_hosts",
+    ],
     PrefixDir: ".",
 }
 
