@@ -3,7 +3,7 @@ MAINTAINER Shanhu Tech Inc.
 
 ARG NPM_VERSION
 
-RUN apk add --update nodejs npm make git openssh zip
+RUN apk add --update nodejs npm make git openssh zip bash
 RUN npm install -g "npm@${NPM_VERSION}"
 RUN npm install -g typescript less
 RUN /bin/sh -c '[[ "$(uname -m)" != amd64 ]] || npm install -g esbuild-linux-64'
