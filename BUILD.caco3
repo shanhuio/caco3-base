@@ -24,7 +24,7 @@ docker_build {
     Name: "nodejs",
     From: ["base"],
     Input: [
-        "idle.js"
+        "idle.js",
         "ssh_known_hosts",
     ],
     PrefixDir: ".",
