@@ -14,4 +14,10 @@ COPY idle.js /usr/local/idle/idle.js
 
 COPY ssh_known_hosts /etc/ssh/known_hosts
 
+RUN adduser -D -u 3000 node
+RUN mkdir -p /opt/node
+RUN chown -R node /opt/node
+WORKDIR /opt/node
+USER node
+
 CMD ["/usr/bin/node", "/usr/local/idle/idle.js"]
