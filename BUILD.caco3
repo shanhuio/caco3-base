@@ -1,0 +1,75 @@
+docker_pull {
+    Name: "alpine",
+    Pull: "alpine:3.15.4",
+}
+
+docker_build {
+    Name: "base",
+    From: ["alpine"],
+}
+
+docker_build {
+    Name: "hatch",
+    From: ["base"],
+    Input: ["idle.go"],
+    PrefixDir: ".",
+}
+
+docker_build {
+    Name: "app",
+    From: ["base"],
+}
+
+docker_build {
+    Name: "nodejs",
+    From: ["base"],
+    Input: ["idle.js"],
+    PrefixDir: ".",
+    Args: ["NPM_VERSION=8.8.0"],
+}
+
+download {
+    Name: "download_golang",
+    URL: "https://go.dev/dl/go1.18.1.src.tar.gz",
+    Checksum: "sha256:efd43e0f1402e083b73a03d444b7b6576bb4c539ac46208b63a916b69aca4088",
+    Output: "go-src.tgz",
+}
+
+docker_run {
+    Name: "build_golang",
+    Image: "hatch",
+    Input: {
+        "go-src.tgz": "/usr/local/go-src.tgz",
+        "build-go.sh": "/root/build-go.sh",
+    },
+    Output: {
+        "go.tgz": "/usr/local/go.tgz",
+    },
+    WorkDir: "/root",
+    Command: ["/bin/bash", "/root/build-go.sh"],
+}
+
+docker_build {
+    Name: "golang",
+    From: ["base"],
+    Input: ["go.tgz"],
+    PrefixDir: ".",
+}
+
+docker_build {
+    Name: "forge",
+    From: ["golang"],
+    Input: ["idle.go"],
+    PrefixDir: ".",
+}
+
+bundle {
+    Name: "core",
+    Deps: [
+        "app",
+        "golang",
+        "forge",
+        "nodejs",
+    ],
+}
+
