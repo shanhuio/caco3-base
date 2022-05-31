@@ -28,7 +28,7 @@ docker_build {
         "ssh_known_hosts",
     ],
     PrefixDir: ".",
-    Args: ["NPM_VERSION=8.10.0"],
+    Args: ["NPM_VERSION=8.11.0"],
 }
 
 download {
