@@ -1,6 +1,6 @@
 docker_pull {
     Name: "alpine",
-    Pull: "alpine:3.16.0",
+    Pull: "alpine:3.16.2",
 }
 
 docker_build {
