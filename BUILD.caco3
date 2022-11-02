@@ -33,8 +33,8 @@ docker_build {
 
 download {
     Name: "download_golang",
-    URL: "https://go.dev/dl/go1.19.2.src.tar.gz",
-    Checksum: "sha256:2ce930d70a931de660fdaf271d70192793b1b240272645bf0275779f6704df6b",
+    URL: "https://go.dev/dl/go1.19.3.src.tar.gz",
+    Checksum: "18ac263e39210bcf68d85f4370e97fb1734166995a1f63fb38b4f6e07d90d212",
     Output: "go-src.tgz",
 }
 
