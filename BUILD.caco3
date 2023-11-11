@@ -28,13 +28,14 @@ docker_build {
         "ssh_known_hosts",
     ],
     PrefixDir: ".",
-    Args: ["NPM_VERSION=10.2.1"],
+    // See https://www.npmjs.com/package/npm
+    Args: ["NPM_VERSION=10.2.3"],
 }
 
 download {
     Name: "download_golang",
-    URL: "https://go.dev/dl/go1.21.3.src.tar.gz",
-    Checksum: "sha256:186f2b6f8c8b704e696821b09ab2041a5c1ee13dcbc3156a13adcf75931ee488",
+    URL: "https://go.dev/dl/go1.21.4.src.tar.gz",
+    Checksum: "sha256:47b26a83d2b65a3c1c1bcace273b69bee49a7a7b5168a7604ded3d26a37bd787",
     Output: "go-src.tgz",
 }
 
