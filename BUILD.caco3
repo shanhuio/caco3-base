@@ -1,6 +1,6 @@
 docker_pull {
     Name: "alpine",
-    Pull: "alpine:3.19.1",
+    Pull: "alpine:3.20.1",
 }
 
 docker_build {
@@ -29,13 +29,13 @@ docker_build {
     ],
     PrefixDir: ".",
     // See https://www.npmjs.com/package/npm
-    Args: ["NPM_VERSION=10.7.0"],
+    Args: ["NPM_VERSION=10.8.1"],
 }
 
 download {
     Name: "download_golang",
-    URL: "https://go.dev/dl/go1.22.2.src.tar.gz",
-    Checksum: "sha256:374ea82b289ec738e968267cac59c7d5ff180f9492250254784b2044e90df5a9",
+    URL: "https://go.dev/dl/go1.22.5.src.tar.gz",
+    Checksum: "sha256:ac9c723f224969aee624bc34fd34c9e13f2a212d75c71c807de644bb46e112f6",
     Output: "go-src.tgz",
 }
 
